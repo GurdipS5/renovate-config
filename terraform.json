@@ -1,0 +1,18 @@
+{
+  "extends": ["github>gssira/renovate-config:default.json"],
+  "enabledManagers": ["terraform", "github-actions"],
+  "packageRules": [
+    {
+      "description": "Group Terraform provider minor+patch updates",
+      "matchManagers": ["terraform"],
+      "groupName": "Terraform providers (minor + patch)",
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "description": "Prevent automerge of major Terraform version bumps",
+      "matchManagers": ["terraform"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}
