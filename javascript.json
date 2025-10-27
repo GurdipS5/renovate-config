@@ -1,0 +1,49 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "JavaScript/Node.js preset",
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "JS production non-major",
+      "automerge": true,
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "JS production major",
+      "automerge": false,
+      "labels": ["javascript", "major-update"],
+      "reviewers": ["team:frontend"]
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "JS dev dependencies",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["typescript"],
+      "groupName": "TypeScript",
+      "automerge": false,
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackagePatterns": ["^react", "^@types/react"],
+      "groupName": "React ecosystem",
+      "automerge": false
+    }
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      "npm audit fix --package-lock-only",
+      "npm run lint:fix || true"
+    ],
+    "fileFilters": ["package-lock.json", "**/*.js", "**/*.ts"]
+  }
+}
