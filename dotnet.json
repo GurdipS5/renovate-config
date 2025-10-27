@@ -1,5 +1,5 @@
 {
-  "extends": ["github>gssira/renovate-config:default.json"],
+  "extends": ["github>gurdips5/renovate-config:default.json"],
   "enabledManagers": ["nuget", "github-actions", "docker"],
   "packageRules": [
     {
