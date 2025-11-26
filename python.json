@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchManagers": ["pip_requirements", "pip-compile", "pipenv", "poetry", "pep621"],
+      "groupName": "python dependencies"
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "dev dependencies"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
